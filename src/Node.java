@@ -66,11 +66,16 @@ public class Node{
 
 		    	// **** Sleep for a while
 		    	// This is the critical session
+				System.out.println("Node: Entering CS");
 				Thread.sleep(random.nextLong(waitTime));
+				System.out.println("Node: Exited CS");
 
 		    	// **** Return the token
 		    	// Print suitable messages - also considering communication failures
-
+				System.out.println("Node: Returning token");
+				socket = new Socket(nodeHostAddress, coordinatorReturnPort);
+				printWriter = new PrintWriter(socket.getOutputStream());
+				printWriter.println("Node: Token return");
     		}
     		catch (IOException e) {
 		    System.out.println(e);
@@ -84,16 +89,16 @@ public class Node{
 			// wait for a token to be granted from C_mutex
 			nodeServerSocket = new ServerSocket(nodePort);
 			nodeToken = nodeServerSocket.accept();
+
+			System.out.printf("Node: Connection IN - accepted socket, %s\r\n", nodeToken.toString());
 			String cResponse = null;
 
-			while (cResponse == null){
-				BufferedReader br = new BufferedReader(new InputStreamReader(nodeToken.getInputStream()));
-				cResponse = br.readLine(); // Coordinator response
-			}
+			// read the InputStream of the socket for coordinator response
+			BufferedReader br = new BufferedReader(new InputStreamReader(nodeToken.getInputStream()));
+			cResponse = br.readLine(); // Coordinator response
 
 			// server acknowledgement
 			System.out.printf("Node: %s\r\n", cResponse);
-			nodeToken.close();
 		}
 		catch (IOException e){
 			e.printStackTrace();

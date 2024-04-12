@@ -1,5 +1,4 @@
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.*;
 
 public class C_mutex extends Thread{
@@ -7,6 +6,8 @@ public class C_mutex extends Thread{
 	private Socket s;
 	private int port;
 	private PrintWriter pw;
+	private InputStream in;
+	private BufferedReader bin;
 
     // ip address and port number of the node requesting the token.
     // They will be fetched from the buffer    
@@ -26,7 +27,7 @@ public class C_mutex extends Thread{
 			ServerSocket serverSocketReturn = new ServerSocket(7001);
 
 
-			while (true) {
+			do {
 				// >>> Print some info on the current buffer content for debugging purposes.
 				// >>> please look at the available methods in C_buffer
 
@@ -34,25 +35,24 @@ public class C_mutex extends Thread{
 
 				// if the buffer is not empty
 				if (buffer.size() != 0) {
-					System.out.println("C:mutex - buffer not empty");
 
 					// >>>   Getting the first (FIFO) node that is waiting for a TOKEN form the buffer
 					//       Type conversions may be needed.
-					String[] bufferRequest = new String[2];
-					bufferRequest = (String[]) buffer.get();
-					nodeHostAddress = bufferRequest[0];
-					nodePort = Integer.parseInt(bufferRequest[1]);
+
+					nodeHostAddress = (String) buffer.get();
+					nodePort = Integer.parseInt((String) buffer.get());
 
 
 					 // >>>  **** Granting the token
-					System.out.println("C:mutex - Connecting to node");
-
 					try {
 						s = new Socket(nodeHostAddress, nodePort);
+
+						System.out.println("C:connection IN - Mutex connecting to node");
 						pw = new PrintWriter(s.getOutputStream());
-						pw.print("C:mutex - Token Granted");
+						pw.print("C:response - Token Granted");
 						pw.close();
 						s.close();
+						System.out.println("C:connection OUT - Mutex socket to node closed");
 					}
 					catch (IOException e) {
 						System.out.println(e);
@@ -61,14 +61,27 @@ public class C_mutex extends Thread{
 
 
 					//  >>>  **** Getting the token back
-//					try {
-//						// THIS IS BLOCKING !
-//					} catch (IOException e) {
-//						System.out.println(e);
-//						System.out.println("CRASH Mutex waiting for the TOKEN back" + e);
-//					}
+					try {
+						// THIS IS BLOCKING !
+						System.out.printf("C:serversocket - Heartbeat status: Bound[%s]\r\n", serverSocketReturn.isBound());
+						s = serverSocketReturn.accept();
+						in = s.getInputStream();
+						bin = new BufferedReader(new InputStreamReader(in));
+
+						System.out.printf("C:mutex - %s\r\n", bin.readLine());
+
+						// close the socket
+						s.close();
+
+					} catch (IOException e) {
+						System.out.println(e);
+						System.out.println("CRASH Mutex waiting for the TOKEN back" + e);
+					}
+
 				}// endif
-			}// endwhile
+			}
+			while(!(buffer.size() == 0));
+
 		}// end try
 		catch (Exception e) {
 			e.printStackTrace();
