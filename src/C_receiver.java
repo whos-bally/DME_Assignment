@@ -20,12 +20,14 @@ public class C_receiver extends Thread{
     }
     
     public void run () {
-
+		// >>> create the socket the server will listen to
 		try {
 			serverSocket = new ServerSocket(7000);
 			System.out.println("C:receiver - Coordinator is listening for requests");
 		} catch (IOException e) {
+			System.out.println("C:receiver - Error connecting to socket");
 			e.printStackTrace();
+			System.exit(1);
 		}
 
 		do {
@@ -33,19 +35,16 @@ public class C_receiver extends Thread{
 
 				// >>> get a new connection
 				socketFromNode = serverSocket.accept();
-
 				System.out.println ("C:receiver - Coordinator has received a request") ;
 
 				// >>> create a separate thread to service the request, a C_Connection_r thread.
 				connect = new C_Connection_r(socketFromNode, buffer);
-				connect.run();
-				System.out.println("C:receiver - closing request thread");
-				//serverSocket.close();
-
+				connect.start();
 			}
 			catch (IOException e) {
-				System.out.println("Exception when creating a connection ");
+				System.out.println("C:receiver - Exception when creating a connection ");
 				e.printStackTrace();
+				System.exit(1);
 			}
 	    
 		}

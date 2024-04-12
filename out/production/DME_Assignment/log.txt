@@ -1,0 +1,44 @@
+
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:43 BST 2024 | Action: New request from node ( 127.0.0.1 : 7005)
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:43 BST 2024 | Action: Buffer queue size = 0
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:43 BST 2024 | Action: Token granted
+Process: Node | Timestamp: Fri Apr 12 19:13:43 BST 2024 | Action: Entering critical section
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:43 BST 2024 | Action: New request from node ( 127.0.0.1 : 7003)
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:43 BST 2024 | Action: Buffer queue size = 2
+Process: Node | Timestamp: Fri Apr 12 19:13:47 BST 2024 | Action: Token returned
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:47 BST 2024 | Action: Token granted
+Process: Node | Timestamp: Fri Apr 12 19:13:47 BST 2024 | Action: Entering critical section
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:47 BST 2024 | Action: New request from node ( 127.0.0.1 : 7004)
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:47 BST 2024 | Action: Buffer queue size = 2
+Process: Node | Timestamp: Fri Apr 12 19:13:50 BST 2024 | Action: Token returned
+Process: Coordinator | Timestamp: Fri Apr 12 19:13:50 BST 2024 | Action: Token granted
+Process: Node | Timestamp: Fri Apr 12 19:13:50 BST 2024 | Action: Entering critical section
+Process: Node | Timestamp: Fri Apr 12 19:13:56 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:53 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:53 BST 2024 | Action: Buffer queue size = 0
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:53 BST 2024 | Action: New request from node ( 127.0.0.1 : 7003)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:53 BST 2024 | Action: Buffer queue size = 2
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:53 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:53 BST 2024 | Action: Buffer queue size = 4
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:54 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:54 BST 2024 | Action: Buffer queue size = 6
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:55 BST 2024 | Action: New request from node ( 127.0.0.1 : 7005)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:13:55 BST 2024 | Action: Buffer queue size = 8
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:14:01 BST 2024 | Action: New request from node ( 127.0.0.1 : 7004)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:14:01 BST 2024 | Action: Buffer queue size = 10
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:02 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:02 BST 2024 | Action: Buffer queue size = 0
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:02 BST 2024 | Action: New request from node ( 127.0.0.1 : 7003)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:02 BST 2024 | Action: Buffer queue size = 2
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:03 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:03 BST 2024 | Action: Buffer queue size = 4
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:03 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:03 BST 2024 | Action: Buffer queue size = 6
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:09 BST 2024 | Action: New request from node ( 127.0.0.1 : 7005)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:09 BST 2024 | Action: Buffer queue size = 8
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:09 BST 2024 | Action: New request from node ( 127.0.0.1 : 7004)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:21:09 BST 2024 | Action: Buffer queue size = 10
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:40:25 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:40:25 BST 2024 | Action: Buffer queue size = 0
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:44:41 BST 2024 | Action: New request from node ( null : null)
+Process: Coordinator	 | Timestamp: Fri Apr 12 20:44:41 BST 2024 | Action: Buffer queue size = 0

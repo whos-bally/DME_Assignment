@@ -37,14 +37,14 @@ public class C_Connection_r extends Thread{
 		    
 		    socket.close(); // socket on port 7000 closed
 		    System.out.println("C:connection OUT    received and recorded request from "+ request[NODE]+":"+request[PORT]+ "  (socket closed)");
-
-			new Logger("Coordinator", "New request from node ( " + request[NODE] + " : " + request[PORT] + ")");
+			new Logger("Coordinator", "Token requested by " + request[NODE] + " : " + request[PORT]);
 
 			// >>> save it in a request object and save the object in the buffer (see C_buffer's methods).
 			synchronized (buffer) {
 				buffer.saveRequest(request);
 				buffer.notify(); // notify waiting threads that the buffer is no longer empty
 			}
+			new Logger("Coordinator", "Buffer queue size is " + buffer.size());
 		} 
 		catch (java.io.IOException e){
 				System.out.println(e);
@@ -54,13 +54,6 @@ public class C_Connection_r extends Thread{
 
 		// show the buffer queue
 		buffer.show();
-		try {
-			new Logger("Coordinator", "Buffer queue size = " + buffer.size());
-		} catch (IOException e) {
-			System.out.println("C:Connection - IO Error when logging");
-			e.printStackTrace();
-			System.exit(1);
-		}
 
-	}
+ 	}
 }// end class
