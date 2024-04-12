@@ -31,8 +31,8 @@ public class C_mutex extends Thread{
 				// >>> Print some info on the current buffer content for debugging purposes.
 				// >>> please look at the available methods in C_buffer
 
-//				System.out.println("C:mutex - Buffer contents");
-//				buffer.show();
+				System.out.println("C:mutex - Buffer contents");
+				buffer.show();
 
 
 				synchronized (buffer) {
@@ -57,12 +57,14 @@ public class C_mutex extends Thread{
 				// >>>  **** Granting the token
 				try {
 					grantToken();
+					new Logger("Coordinator", "Token granted");
 				}
 				catch (ConnectException e){
 					boolean success = false;
 
 					while (!success){
 						grantToken();
+						new Logger("Coordinator", "Token granted");
 						success = true;
 					}
 				}
