@@ -18,7 +18,8 @@ public class Node{
 	private String nodeHostName;
 	private int nodePort;
 	private Random random;
-	private PrintWriter printWriter = null;
+	private PrintWriter pw = null;
+	private boolean hasToken = false;
     public Node(String nHostName, int nPort, int waitTime) throws InterruptedException {
 
 		// setup class variables
@@ -36,7 +37,7 @@ public class Node{
 		  * a TOKEN (actually just a synchronization).
 		  **/
     
-    	while(true){
+    	while(!hasToken){
 
 
 			try{
@@ -48,62 +49,67 @@ public class Node{
 				e.printStackTrace();
 			}
 
+			// **** Send to the coordinator a token request.
     		try {
-				// **** Send to the coordinator a token request.
 				socket = new Socket(nodeHostAddress, coordinatorRequestPort);
 
 				// send your ip address and port number
-				printWriter = new PrintWriter(socket.getOutputStream());
-				printWriter.println(nodeHostAddress);
-				printWriter.flush();
-				printWriter.println(nodePort);
-				printWriter.close();
-
-		    	// **** Then Wait for the token
-		    	// Print suitable messages
-				System.out.println("Node: Waiting for token");
-				tokenRequest();
-
-		    	// **** Sleep for a while
-		    	// This is the critical session
-				System.out.println("Node: Entering CS");
-				Thread.sleep(random.nextLong(waitTime));
-				System.out.println("Node: Exited CS");
-
-		    	// **** Return the token
-		    	// Print suitable messages - also considering communication failures
-				System.out.println("Node: Returning token");
-				socket = new Socket(nodeHostAddress, coordinatorReturnPort);
-				printWriter = new PrintWriter(socket.getOutputStream());
-				printWriter.println("Node: Token return");
+				pw = new PrintWriter(socket.getOutputStream());
+				pw.println(nodeHostAddress);
+				pw.flush();
+				pw.println(nodePort);
+				pw.close();
+				socket.close();
     		}
     		catch (IOException e) {
-		    System.out.println(e);
-		    System.exit(1);
+				e.printStackTrace();
+				System.exit(1);
     		}
+
+			// **** Then Wait for the token
+			try{
+				System.out.println("Node: Waiting for token");
+
+				// wait for a token to be granted from C_mutex
+				nodeServerSocket = new ServerSocket(nodePort);
+				nodeToken = nodeServerSocket.accept();
+
+				System.out.printf("Node: Connection IN - accepted socket, %s\r\n", nodeToken.toString());
+				String cResponse = null;
+
+				// read the InputStream of the socket for coordinator response
+				BufferedReader br = new BufferedReader(new InputStreamReader(nodeToken.getInputStream()));
+				cResponse = br.readLine(); // Coordinator response
+
+				// server acknowledgement
+				System.out.printf("Node: %s\r\n", cResponse);
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+
+			// **** Sleep for a while
+			// This is the critical session
+			System.out.println("Node: Entering CS");
+			Thread.sleep(random.nextLong(waitTime));
+			System.out.println("Node: Exited CS");
+
+			// **** Return the token
+			try {
+				System.out.println("Node: Returning token");
+				socket = new Socket(coordinatorHostAddress, coordinatorReturnPort);
+				pw = new PrintWriter(socket.getOutputStream());
+				pw.println("Node: Token return");
+				pw.close();
+				socket.close();
+				System.out.println("Node: Token returned");
+				hasToken = true;
+			}
+			catch (IOException e){
+				e.printStackTrace();
+			}
     	}
     }
-
-	private synchronized void tokenRequest(){
-		try{
-			// wait for a token to be granted from C_mutex
-			nodeServerSocket = new ServerSocket(nodePort);
-			nodeToken = nodeServerSocket.accept();
-
-			System.out.printf("Node: Connection IN - accepted socket, %s\r\n", nodeToken.toString());
-			String cResponse = null;
-
-			// read the InputStream of the socket for coordinator response
-			BufferedReader br = new BufferedReader(new InputStreamReader(nodeToken.getInputStream()));
-			cResponse = br.readLine(); // Coordinator response
-
-			// server acknowledgement
-			System.out.printf("Node: %s\r\n", cResponse);
-		}
-		catch (IOException e){
-			e.printStackTrace();
-		}
-	}
     
     public static void main (String args[]) throws InterruptedException {
 		String nodeHostName = "";

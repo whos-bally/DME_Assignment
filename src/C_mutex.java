@@ -31,7 +31,9 @@ public class C_mutex extends Thread{
 				// >>> Print some info on the current buffer content for debugging purposes.
 				// >>> please look at the available methods in C_buffer
 
-				System.out.println("C:mutex - Buffer size is " + buffer.size());
+				//System.out.println("C:mutex - Buffer size is " + buffer.size());
+//				System.out.println("C:mutex - Buffer contents");
+//				buffer.show();
 
 				// if the buffer is not empty
 				if (buffer.size() != 0) {
@@ -45,46 +47,60 @@ public class C_mutex extends Thread{
 
 					 // >>>  **** Granting the token
 					try {
-						s = new Socket(nodeHostAddress, nodePort);
+						grantToken();
+					}
+					catch (ConnectException e){
+						boolean success = false;
 
-						System.out.println("C:connection IN - Mutex connecting to node");
-						pw = new PrintWriter(s.getOutputStream());
-						pw.print("C:response - Token Granted");
-						pw.close();
-						s.close();
-						System.out.println("C:connection OUT - Mutex socket to node closed");
+						while (!success){
+							grantToken();
+							success = true;
+						}
 					}
 					catch (IOException e) {
-						System.out.println(e);
-						System.out.println("CRASH Mutex connecting to the node for granting the TOKEN" + e);
+						e.printStackTrace();
+						System.out.println("C:mutex - Unable to grant token to node");
 					}
 
 
 					//  >>>  **** Getting the token back
 					try {
 						// THIS IS BLOCKING !
-						System.out.printf("C:serversocket - Heartbeat status: Bound[%s]\r\n", serverSocketReturn.isBound());
 						s = serverSocketReturn.accept();
 						in = s.getInputStream();
 						bin = new BufferedReader(new InputStreamReader(in));
 
 						System.out.printf("C:mutex - %s\r\n", bin.readLine());
-
 						// close the socket
 						s.close();
 
-					} catch (IOException e) {
-						System.out.println(e);
-						System.out.println("CRASH Mutex waiting for the TOKEN back" + e);
+					}
+					catch (SocketException e){
+						e.printStackTrace();
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+						System.out.println("CRASH Mutex waiting for the TOKEN back");
 					}
 
 				}// endif
 			}
-			while(!(buffer.size() == 0));
+			while(true);
 
 		}// end try
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void grantToken() throws SocketException, IOException{
+		s = new Socket(nodeHostAddress, nodePort);
+
+		System.out.println("C:connection IN - Mutex connecting to node");
+		pw = new PrintWriter(s.getOutputStream());
+		pw.print("C:response - Token Granted");
+		pw.close();
+		s.close();
+		System.out.println("C:connection OUT - Mutex socket to node closed");
 	}
 }//end class

@@ -34,13 +34,13 @@ public class C_receiver extends Thread{
 				// >>> get a new connection
 				socketFromNode = serverSocket.accept();
 
-				System.out.println ("C:receiver - Coordinator has received a request ...") ;
+				System.out.println ("C:receiver - Coordinator has received a request") ;
 
 				// >>> create a separate thread to service the request, a C_Connection_r thread.
 				connect = new C_Connection_r(socketFromNode, buffer);
 				connect.run();
 				System.out.println("C:receiver - closing request thread");
-				serverSocket.close();
+				//serverSocket.close();
 
 			}
 			catch (IOException e) {
@@ -49,6 +49,7 @@ public class C_receiver extends Thread{
 			}
 	    
 		}
-		while (!serverSocket.isClosed());
-    }//end run
+		while (true);
+    }
+
 }//end class

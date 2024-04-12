@@ -28,10 +28,10 @@ public class Coordinator {
 
 		// start threads for C_receiver & C_mutex
 		System.out.println("Coordinator: running receiver");
-		receiver.run();
+		receiver.start();
 
 		System.out.println("Coordinator: running mutex");
-		mutex.run();
+		mutex.start();
 
     }
     
