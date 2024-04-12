@@ -8,21 +8,31 @@ public class Coordinator {
 		Coordinator c = new Coordinator ();
 		
 		try {    
-		    InetAddress c_addr = InetAddress.getLocalHost();
-		    String c_name = c_addr.getHostName();
-		    System.out.println ("Coordinator address is "+c_addr);
-		    System.out.println ("Coordinator host name is "+c_name+"\n\n");    
+		    InetAddress coordinatorHostAddress = InetAddress.getLocalHost();
+		    String coordinatorHostName = coordinatorHostAddress.getHostName();
+		    System.out.println ("Coordinator address is "+coordinatorHostAddress);
+		    System.out.println ("Coordinator host name is "+coordinatorHostName+"\n\n");
 		}
 		catch (Exception e) {
-		    System.err.println(e);
-		    System.err.println("Error in coordinator");
+			System.err.println("Error in coordinator");
+			e.printStackTrace();
 		}
 				
 		// allows defining port at launch time
 		if (args.length == 1) port = Integer.parseInt(args[0]);
 	
 		// Create and run a C_receiver and a C_mutex object sharing a C_buffer object
+		C_buffer buffer = new C_buffer();
+		C_receiver receiver = new C_receiver(buffer, port);
+		C_mutex mutex = new C_mutex(buffer, port);
+
+		// start threads for C_receiver & C_mutex
+		System.out.println("Coordinator: running receiver");
+		receiver.run();
+
+		System.out.println("Coordinator: running mutex");
+		mutex.run();
 
     }
     
-}
+}// end class
