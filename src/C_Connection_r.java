@@ -28,7 +28,7 @@ public class C_Connection_r extends Thread{
 
 		try {	
 		    
-		    // >>> read the request, i.e. node ip and port from the socket s
+		    // >>> read the request, i.e. node ip and port from the socket
 		    in = socket.getInputStream();
 		    bin = new BufferedReader(new InputStreamReader(in));
 
@@ -39,8 +39,10 @@ public class C_Connection_r extends Thread{
 		    System.out.println("C:connection OUT    received and recorded request from "+ request[NODE]+":"+request[PORT]+ "  (socket closed)");
 
 			// >>> save it in a request object and save the object in the buffer (see C_buffer's methods).
-			buffer.saveRequest(request);
-			System.out.println("C:connection   buffer request saved");
+			synchronized (buffer) {
+				buffer.saveRequest(request);
+				buffer.notify(); // notify waiting threads that the buffer is no longer empty
+			}
 		} 
 		catch (java.io.IOException e){
 				System.out.println(e);

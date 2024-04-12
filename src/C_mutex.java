@@ -27,16 +27,24 @@ public class C_mutex extends Thread{
 			ServerSocket serverSocketReturn = new ServerSocket(7001);
 
 
-			do {
+			while(true) {
 				// >>> Print some info on the current buffer content for debugging purposes.
 				// >>> please look at the available methods in C_buffer
 
-				//System.out.println("C:mutex - Buffer size is " + buffer.size());
 //				System.out.println("C:mutex - Buffer contents");
 //				buffer.show();
 
-				// if the buffer is not empty
-				if (buffer.size() != 0) {
+
+				synchronized (buffer) {
+					// Wait until the buffer is not empty
+					while (buffer.size() == 0) {
+						try {
+							// Wait for notifications from other threads
+							buffer.wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
 
 					// >>>   Getting the first (FIFO) node that is waiting for a TOKEN form the buffer
 					//       Type conversions may be needed.
@@ -44,48 +52,47 @@ public class C_mutex extends Thread{
 					nodeHostAddress = (String) buffer.get();
 					nodePort = Integer.parseInt((String) buffer.get());
 
+				}
 
-					 // >>>  **** Granting the token
-					try {
+				// >>>  **** Granting the token
+				try {
+					grantToken();
+				}
+				catch (ConnectException e){
+					boolean success = false;
+
+					while (!success){
 						grantToken();
+						success = true;
 					}
-					catch (ConnectException e){
-						boolean success = false;
-
-						while (!success){
-							grantToken();
-							success = true;
-						}
-					}
-					catch (IOException e) {
-						e.printStackTrace();
-						System.out.println("C:mutex - Unable to grant token to node");
-					}
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("C:mutex - Unable to grant token to node");
+				}
 
 
-					//  >>>  **** Getting the token back
-					try {
-						// THIS IS BLOCKING !
-						s = serverSocketReturn.accept();
-						in = s.getInputStream();
-						bin = new BufferedReader(new InputStreamReader(in));
+				//  >>>  **** Getting the token back
+				try {
+					// THIS IS BLOCKING !
+					s = serverSocketReturn.accept();
+					in = s.getInputStream();
+					bin = new BufferedReader(new InputStreamReader(in));
 
-						System.out.printf("C:mutex - %s\r\n", bin.readLine());
-						// close the socket
-						s.close();
+					System.out.printf("C:mutex - %s\r\n", bin.readLine());
+					// close the socket
+					s.close();
 
-					}
-					catch (SocketException e){
-						e.printStackTrace();
-					}
-					catch (IOException e) {
-						e.printStackTrace();
-						System.out.println("CRASH Mutex waiting for the TOKEN back");
-					}
+				}
+				catch (SocketException e){
+					e.printStackTrace();
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("CRASH Mutex waiting for the TOKEN back");
+				}
 
-				}// endif
 			}
-			while(true);
 
 		}// end try
 		catch (Exception e) {
