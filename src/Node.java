@@ -102,7 +102,7 @@ public class Node{
 			}
 
 
-			Thread.sleep(random.nextLong(waitTime));
+			Thread.sleep((long) random.nextLong(waitTime));
 			System.out.println("Node: Exited CS");
 
 			// **** Return the token
@@ -110,7 +110,7 @@ public class Node{
 				System.out.println("Node: Returning token");
 				socket = new Socket(coordinatorHostAddress, coordinatorReturnPort);
 				pw = new PrintWriter(socket.getOutputStream());
-				pw.println("Node: Token return");
+				pw.println("Node: Token returned");
 				pw.close();
 				socket.close();
 				System.out.println("Node: Token returned");

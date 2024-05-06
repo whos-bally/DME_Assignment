@@ -57,26 +57,25 @@ public class C_mutex extends Thread{
 				// >>>  **** Granting the token
 				try {
 					grantToken();
-					new Logger("Coordinator", "Token granted");
 				}
 				catch (ConnectException e){
+					System.out.println("C:mutex - Unable to connect to node, attempting to try again...");
 					boolean success = false;
 
 					while (!success){
 						grantToken();
-						new Logger("Coordinator", "Token granted");
 						success = true;
 					}
 				}
 				catch (IOException e) {
-					e.printStackTrace();
 					System.out.println("C:mutex - Unable to grant token to node");
+					e.printStackTrace();
 				}
 
 
 				//  >>>  **** Getting the token back
 				try {
-					// THIS IS BLOCKING !
+
 					s = serverSocketReturn.accept();
 					in = s.getInputStream();
 					bin = new BufferedReader(new InputStreamReader(in));
@@ -87,11 +86,12 @@ public class C_mutex extends Thread{
 
 				}
 				catch (SocketException e){
+					System.out.println("C:mutex - Connection error receiving token back");
 					e.printStackTrace();
 				}
 				catch (IOException e) {
+					System.out.println("CRASH: Mutex waiting for the TOKEN back");
 					e.printStackTrace();
-					System.out.println("CRASH Mutex waiting for the TOKEN back");
 				}
 
 			}
@@ -102,14 +102,18 @@ public class C_mutex extends Thread{
 		}
 	}
 
-	private void grantToken() throws SocketException, IOException{
+	private void grantToken() throws IOException, InterruptedException {
+		sleep(3000); // sleep for 3 seconds to allow for OS to close ports in TIME_WAIT
+
+		// then open a socket to the node
 		s = new Socket(nodeHostAddress, nodePort);
 
-		System.out.println("C:connection IN - Mutex connecting to node");
+		System.out.println("C:mutex - Connecting to Node");
 		pw = new PrintWriter(s.getOutputStream());
-		pw.print("C:response - Token Granted");
+		pw.print("C:mutex - Token Granted");
 		pw.close();
+		new Logger("Coordinator", "Token granted");
 		s.close();
-		System.out.println("C:connection OUT - Mutex socket to node closed");
+		System.out.println("C:mutex - Socket to Node closed on port " + nodePort);
 	}
 }//end class

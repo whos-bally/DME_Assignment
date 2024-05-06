@@ -14,3 +14,118 @@ Process: Node	 | Timestamp: Fri Apr 12 21:19:00 BST 2024 | Action: Token returne
 Process: Coordinator	 | Timestamp: Fri Apr 12 21:19:00 BST 2024 | Action: Token granted
 Process: Node	 | Timestamp: Fri Apr 12 21:19:00 BST 2024 | Action: Entering critical section
 Process: Node	 | Timestamp: Fri Apr 12 21:19:04 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:44 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:44 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:44 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 16:13:44 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 16:13:46 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:48 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:48 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:48 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 16:13:48 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 16:13:55 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:59 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:59 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 16:13:59 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 16:13:59 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 16:14:01 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 16:14:04 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 16:14:04 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 16:14:31 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 16:14:31 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 17:23:00 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 17:23:00 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 17:23:01 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 17:23:01 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 17:23:03 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 17:23:03 BST 2024 | Action: Buffer queue size is 4
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:30 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:30 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:30 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:30 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:33 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:37:33 BST 2024 | Action: Entering critical section
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:33 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:33 BST 2024 | Action: Buffer queue size is 4
+Process: Node	 | Timestamp: Mon May 06 18:37:35 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:38 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:37:38 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:37:41 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:44 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:37:44 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:37:44 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:59 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:59 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:59 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:59 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:59 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 18:37:59 BST 2024 | Action: Buffer queue size is 4
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:02 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:38:02 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:38:05 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:08 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:38:08 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:38:09 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:12 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:38:12 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:38:13 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:35 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:35 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:37 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:37 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:38 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:38 BST 2024 | Action: Buffer queue size is 4
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:38 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:38:38 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:38:38 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:41 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:38:41 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:38:43 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:38:46 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:38:46 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:38:46 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:39:58 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 18:39:58 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:00 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:00 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:01 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:01 BST 2024 | Action: Entering critical section
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:03 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:03 BST 2024 | Action: Buffer queue size is 4
+Process: Node	 | Timestamp: Mon May 06 18:40:09 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:12 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:12 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:13 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:16 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:16 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:17 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:19 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:19 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:19 BST 2024 | Action: Token requested by 127.0.0.1 : 7003
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:19 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:22 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:22 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:24 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:24 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:24 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:27 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:27 BST 2024 | Action: Entering critical section
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:29 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:29 BST 2024 | Action: Buffer queue size is 4
+Process: Node	 | Timestamp: Mon May 06 18:40:33 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:36 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:36 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:37 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:40 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:40 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:41 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:45 BST 2024 | Action: Token requested by 127.0.0.1 : 7004
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:45 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:46 BST 2024 | Action: Token requested by 127.0.0.1 : 7005
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:46 BST 2024 | Action: Buffer queue size is 2
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:48 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:48 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:51 BST 2024 | Action: Token returned
+Process: Coordinator	 | Timestamp: Mon May 06 18:40:54 BST 2024 | Action: Token granted
+Process: Node	 | Timestamp: Mon May 06 18:40:54 BST 2024 | Action: Entering critical section
+Process: Node	 | Timestamp: Mon May 06 18:40:55 BST 2024 | Action: Token returned
